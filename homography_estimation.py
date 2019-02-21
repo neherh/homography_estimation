@@ -72,6 +72,7 @@ while True:
 
 # calculate Homography and apply to image
 M, mask = cv2.findHomography(imgPts, projPts, 0, 5.0)
+Hom = cv2.getPerspectiveTransform(imgPts.astype(dtype="float32"),projPts.astype(dtype="float32")) #- https://stackoverflow.com/questions/11237948/findhomography-getperspectivetransform-getaffinetransform
 matchesMask = mask.ravel().tolist()
 
 img = img.astype(dtype='float32')
@@ -86,17 +87,10 @@ print(M)
 print(mask)
 print(M.shape)
 
-a = np.array([[1, 2], [4, 5], [7, 8]], dtype='float32')
-h = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], dtype='float32')
-a = np.array([a])
-print(a.shape)
-print(a.dtype)
-print(h.shape)
-pointsOut = cv2.perspectiveTransform(a, h)
 
-projectedImage = cv2.warpPerspective(img, M, img.shape)
+warpedImage = cv2.warpPerspective(img, M, img.shape)
 
-plt.subplot(2,2,3),plt.imshow(projectedImage,cmap = 'gray')
+plt.subplot(2,2,3),plt.imshow(warpedImage,cmap = 'gray')
 plt.title('Warped'), plt.xticks([]), plt.yticks([])
 plt.subplot(2,2,4),plt.imshow(sobely,cmap = 'gray')
 plt.title('Projected'), plt.xticks([]), plt.yticks([])
