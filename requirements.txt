@@ -1,0 +1,9 @@
+
+#scipy==0.19.1
+#scikit-learn==0.18.1
+matplotlib
+#opencv==3.3
+#pandas==0.22
+#theano
+#keras==2.1.5
+#mkl-service==1.1.2
