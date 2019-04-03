@@ -1,0 +1,15 @@
+app:
+  stdin_open: true
+  tty: true
+  ipc: host
+  net: host
+  environment:
+    - PYTHONUNBUFFERED=0
+    - DISPLAY=$DISPLAY
+  build: .
+  
+
+  volumes:
+    - "$PWD:/app"
+    - "$HOME:/home"
+    - "/tmp/.X11-unix:/tmp.X11-unix"

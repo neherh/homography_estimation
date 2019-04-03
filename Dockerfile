@@ -5,12 +5,13 @@ FROM jjanzic/docker-python3-opencv
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY . /app
+#COPY . /app
+COPY requirements.txt /app
 
 # Various Python and C/build deps
-#RUN apt-get update && apt-get install -y \ 
-#    wget \
-#    python-opencv
+RUN apt-get update && apt-get install -y \ 
+    wget \
+    python-opencv
 
 
 
@@ -20,7 +21,7 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 
 # Define environment variable
-ENV NAME World
+#ENV NAME World
 
 # Run app.py when the container launches
-#CMD ["python", "homography_estimation.py"]
+CMD ["python", "homography_estimation.py"]
