@@ -19,9 +19,8 @@ RUN apt-get update && apt-get install -y \
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-
 # Define environment variable
 #ENV NAME World
 
 # Run app.py when the container launches
-CMD ["python", "homography_estimation.py"]
+CMD ["python", "annotate_homography.py"]
